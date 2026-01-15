@@ -65,7 +65,7 @@ struct cpld_data {
 
 static int cpld_probe(struct i2c_client *client,
 			 const struct i2c_device_id *id);
-static int cpld_remove(struct i2c_client *client);
+static void cpld_remove(struct i2c_client *client);
 
 static const struct i2c_device_id cpld_id[] = {
 	{ "CPLD-SFP", SFP },
@@ -370,7 +370,7 @@ static bool cpld_idr_is_empty(struct idr *idp)
 }
 #endif
 
-static int cpld_remove(struct i2c_client *client)
+static void cpld_remove(struct i2c_client *client)
 {
 	struct cpld_data *data = i2c_get_clientdata(client);
 	int i;
@@ -390,7 +390,7 @@ static int cpld_remove(struct i2c_client *client)
 		cpld_class = NULL;
 	}
 
-	return 0;
+	return;
 }
 
 module_i2c_driver(cpld_driver);

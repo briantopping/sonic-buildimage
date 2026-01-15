@@ -61,7 +61,7 @@ struct cpld_led_data {
 
 static int cpld_led_probe(struct i2c_client *client,
 			 const struct i2c_device_id *id);
-static int cpld_led_remove(struct i2c_client *client);
+static void cpld_led_remove(struct i2c_client *client);
 
 static const struct i2c_device_id cpld_led_id[] = {
 	{ "CPLDLED_IX7", IX7 },
@@ -254,7 +254,7 @@ static bool cpld_idr_is_empty(struct idr *idp)
 }
 #endif
 
-static int cpld_led_remove(struct i2c_client *client)
+static void cpld_led_remove(struct i2c_client *client)
 {
 	struct cpld_led_data *data = i2c_get_clientdata(client);
 
@@ -269,7 +269,7 @@ static int cpld_led_remove(struct i2c_client *client)
 		cpld_class = NULL;
 	}
 
-	return 0;
+	return;
 }
 
 module_i2c_driver(cpld_led_driver);
