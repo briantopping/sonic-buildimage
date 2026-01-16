@@ -1,0 +1,2 @@
+# Python files are shipped as wheel in usr/share/sonic/device/, not in dist-packages
+usr/lib/python*/dist-packages/ix*
